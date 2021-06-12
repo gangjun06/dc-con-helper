@@ -6,6 +6,7 @@
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public --no-clear",
+    "start:dev": "sirv public --dev --single",
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "devDependencies": {
@@ -26,11 +27,20 @@
   },
   "dependencies": {
     "@mdi/js": "^5.9.55",
+    "@types/file-saver": "^2.0.2",
+    "@zerodevx/svelte-toast": "^0.3.0",
+    "axios": "^0.21.1",
+    "copy-image-clipboard": "^1.0.1",
+    "file-saver": "^2.0.5",
+    "jszip": "^3.6.0",
     "mdi-svelte": "^1.1.2",
     "postcss": "^8.3.0",
+    "query-string": "^7.0.0",
     "rollup-plugin-postcss": "^4.0.0",
     "sass": "^1.34.1",
     "sirv-cli": "^1.0.0",
-    "svelte-routing": "^1.6.0"
+    "svelte-easy-popover": "^0.1.0",
+    "svelte-routing": "^1.6.0",
+    "svelte-simple-modal": "^0.10.3"
   }
 }

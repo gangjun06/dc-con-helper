@@ -1,0 +1,17 @@
+{  
+  "name": "디시콘 뷰어/다운로더",  
+  "short_name": "디시콘",  
+  "description": "디시콘을 외부에서 편하게 사용합니다",  
+  "start_url": "./index.html",  
+  "icons": [  
+    {  
+      "src": "/icon.png",  
+      "sizes": "128x128",  
+      "type": "image/png"  
+    }  
+  ],  
+  "theme_color": "#3B82F6",  
+  "background_color": "#ffffff",  
+  "display": "fullscreen",  
+  "orientation": "portrait"  
+}  
