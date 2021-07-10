@@ -1,6 +1,6 @@
 import axios from "axios";
 import queryString from "query-string";
-import type { ConInfo} from '../models'
+import type { ConInfo } from "../models";
 
 export const Search = async (keyword: string): Promise<ConInfo[]> => {
   try {
@@ -17,15 +17,17 @@ export const Search = async (keyword: string): Promise<ConInfo[]> => {
       }
     );
 
-    const result: ConInfo[] = res.data.data.list.map((item) => ({
-      id: item.idx,
-      title: item.title,
-      author: item.nick_name,
-      description: item.description,
-      imageUrl: item.main_img_url,
-      regDate: item.reg_date,
-      detailID: item.main_img_url.split("?no=")[1]
-    }));
+    const result: ConInfo[] = res.data.data
+      ? res.data.data.list.map((item) => ({
+          id: item.idx,
+          title: item.title,
+          author: item.nick_name,
+          description: item.description,
+          imageUrl: item.main_img_url,
+          regDate: item.reg_date,
+          detailID: item.main_img_url.split("?no=")[1],
+        }))
+      : [];
     console.log(result);
     return result;
   } catch (e) {

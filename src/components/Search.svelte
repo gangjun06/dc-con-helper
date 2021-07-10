@@ -27,7 +27,7 @@
       placeholder="검색어를 입력하여 주세요"
       bind:value={searchText}
       on:keydown={onKeyDown}
-      class="ml-2 focus:outline-none flex-wrap"
+      class="ml-2 focus:outline-none flex-grow"
     />
   </div>
 </div>

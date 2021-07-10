@@ -12,13 +12,13 @@
   let promise: null | Promise<DetailResult> = null;
   $: promise = utils.Detail(id.toString());
 
-  const downloadAll = (title: string, list: ConItem[]) => {
+  const downloadAll = async (title: string, list: ConItem[]) => {
     try {
       var zip = new JSZip();
 
       var img = zip.folder(title);
       list.forEach((item) => {
-        const blob = utils.GetImageBlob(`view-${item.id}`);
+        let blob = utils.GetImageBlob(item.path, item.ext);
         const name = `디시콘-${item.id}-${item.title}.${item.ext}`;
 
         img.file(name, blob);
