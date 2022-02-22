@@ -47,7 +47,7 @@
           <button
             class="ml-2 sm:mt-0 py-1 px-2 text-red-400 font-semibold rounded-lg hover:shadow-md hover:bg-red-100 focus:outline-none transform transition-colors duration-200"
             on:click={() => {
-              utils.ToggleFavoritedCon(value.info);
+              utils.ToggleFavoritedCon(value);
               value.like = !value.like;
             }}
           >

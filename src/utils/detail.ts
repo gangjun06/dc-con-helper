@@ -1,9 +1,14 @@
 import axios from "axios";
 import queryString from "query-string";
 import type { ConInfo, ConItem, DetailResult } from "../models";
-import { IsFavoriteCon } from "./storage";
+import { IsFavoriteCon, GetConDetail } from "./storage";
 
 export const Detail = async (id: string): Promise<DetailResult> => {
+  try {
+    const res = GetConDetail(id);
+    res.like = IsFavoriteCon(res.info.id);
+    return res;
+  } catch (e) {}
   try {
     const res = await axios.post(
       "https://proxy-dc.gangjun.dev/dccon/package_detail",
