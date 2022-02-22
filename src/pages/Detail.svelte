@@ -11,24 +11,24 @@
   $: id = queryString.parse(window.location.search).id;
   let promise: null | Promise<DetailResult> = null;
   $: promise = utils.Detail(id.toString());
+  let downloading = false;
 
   const downloadAll = async (title: string, list: ConItem[]) => {
+    downloading = true;
     try {
       var zip = new JSZip();
-
       var img = zip.folder(title);
       list.forEach((item) => {
         let blob = utils.GetImageBlob(item.path, item.ext);
         const name = `디시콘-${item.id}-${item.title}.${item.ext}`;
-
         img.file(name, blob);
       });
-      zip.generateAsync({ type: "blob" }).then(function (content) {
-        // see FileSaver.js
-        saveAs(content, `디시콘-${title}.zip`);
-      });
+      const content = await zip.generateAsync({ type: "blob" });
+      saveAs(content, `디시콘-${title}.zip`);
+      downloading = false;
     } catch (e) {
       utils.Toast("error", "처리중 에러가 발생하였습니다.");
+      downloading = false;
     }
   };
 </script>
@@ -70,12 +70,13 @@
         {/each}
       </div>
     </div>
-    <div class="sm:flex justify-between items-center mb-4">
+    <div class="flex justify-between items-center mb-4">
       <div>
-        <div class="text-xl mb-1 text-gray-700">콘 목록</div>
-        <div class="text-gray-400">클릭하여 복사/다운로드 할 수 있습니다.</div>
+        <div class="text-xl text-gray-700">콘 목록</div>
+        <!-- <div class="text-gray-400">클릭하여 복사/다운로드 할 수 있습니다.</div> -->
       </div>
       <DefaultButton
+        disabled={downloading}
         onClick={() => downloadAll(value.info.title, value.list)}
         text="일괄 다운로드"
       />

@@ -404,11 +404,6 @@ console-clear@^1.1.0:
   resolved "https://registry.yarnpkg.com/console-clear/-/console-clear-1.1.1.tgz#995e20cbfbf14dd792b672cde387bd128d674bf7"
   integrity sha512-pMD+MVR538ipqkG5JXeOEbKWS5um1H4LUUccUQG68qpeqBYbzYy79Gh55jkd2TtPdRfUaLWdv6LPP//5Zt0aPQ==
 
-copy-image-clipboard@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/copy-image-clipboard/-/copy-image-clipboard-1.0.1.tgz#2fb1a5817ac5b2da73cce44c0024d6b7b69ee0da"
-  integrity sha512-/qMB5zXnXjdslEFBUpyOjpTMt/jLLKJUCVW3+N1LSFaOwdXIJJ4c8I+CDW/sYFOBPRHNnJpCzlPL1/P82kjWMQ==
-
 core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"

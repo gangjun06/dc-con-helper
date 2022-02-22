@@ -23,7 +23,7 @@
     <div class="mt-12">
       <div class="text-gray-600 mb-4">
         <p class="font-bold inline-block">{searchQuery}</p>
-        에 관한 검색결과가 {value.length}개 있습니다.
+        에 관한 검색결과가 {value.length}개 있습니다. (최대 10개)
       </div>
       <div
         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-flow-row gap-4"

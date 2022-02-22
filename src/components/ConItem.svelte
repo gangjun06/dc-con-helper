@@ -1,39 +1,23 @@
 <script lang="ts">
+  import * as utils from "../utils";
   import type { ConItem } from "../models";
   export let data: ConItem;
-  import { Toast, GetImageBlob } from "../utils";
   const copyCon = async () => {
     try {
-      const shareData = {
-        title: `디시콘 - ${data.title}`,
-        text: "",
-        url: `http://dcimg5.dcinside.com/dccon.php?no=${data.path}`,
-      };
+      let blob = await utils.GetImageBlob(data.path, data.ext);
+      const file = new File([blob], `디시콘-${data.title}.${data.ext}`, {
+        type: blob.type,
+      });
+
       //@ts-ignore
       if (navigator.canShare) {
-        await navigator.share(shareData);
+        await navigator.share({
+          files: [file],
+        });
         return;
       }
     } catch (e) {
-      console.log(e)
-    }
-    try {
-      const blob = await GetImageBlob(data.path, data.ext);
-
-      console.log(blob.type)
-      //@ts-ignore
-      const clipboardItem = new ClipboardItem({ [blob.type]: blob });
-      //@ts-ignore
-      navigator.clipboard.write([clipboardItem]);
-
-      if (data.ext === "gif") {
-        Toast("success", "GIF이미지는 정상적으로 복사되지 않을 수 있습니다.");
-      } else {
-        Toast("success", "성공적으로 복사되었습니다.");
-      }
-    } catch (e) {
-      Toast("error", "처리중 에러가 발생하였습니다.");
-      console.error(e);
+      console.log(e);
     }
   };
 </script>
